@@ -1,17 +1,19 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
+const path = require('path');
+const adminRouter = require('./routes/admin')
+const shopRouter = require('./routes/shop');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use('/admin',adminRouter);
+app.use(shopRouter);
 
 app.use((req, res, next) => {
-    console.log('Middleware 1');
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('in the middleware 2');
-    res.send('<h1>Hello World</h1>');
+    res.status(404).sendFile(path.join(__dirname,'views','404.html'));
 })
 
 app.listen(port, () => {
