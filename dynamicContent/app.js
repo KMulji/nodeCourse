@@ -10,11 +10,11 @@ const port = 3000;
 //set the templating engine pug
 // app.set('view engine', 'pug');
 //set the templating engine handlebars
-app.engine('hbs', engine({
-    defaultLayout: 'main-layout.hbs',
-    extname: 'hbs'
-}));
-app.set('view engine', 'hbs');
+// app.engine('hbs', engine({
+//     defaultLayout: 'main-layout.hbs',
+//     extname: 'hbs'
+// }));
+app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 
